@@ -1,4 +1,4 @@
-package com.example.vaadinone;
+/*package com.example.vaadinone;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
@@ -14,3 +14,4 @@ public class HelloWorldView extends VerticalLayout {
         add(button);
     }
 }
+*/
