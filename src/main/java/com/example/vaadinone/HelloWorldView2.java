@@ -7,6 +7,7 @@ import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+
 @Route("ridvan")
 public class HelloWorldView2 extends VerticalLayout {
 
@@ -17,18 +18,24 @@ public class HelloWorldView2 extends VerticalLayout {
     private TextField menuNameField = new TextField("Menu Name");
     private TextField menuDescriptionField = new TextField("Menu Description");
     private Button saveMenuButton = new Button("Save Menu");
+    private TextField userField = new TextField("User Name");
+    private TextField userIDField = new TextField("User ID");
+    private Button saveUserButton = new Button("Save User");
 
     @Autowired
     private MenuRepository menuRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public HelloWorldView2() {
-        add(heightField, weightField, calculateButton, openTrendyol, menuNameField, menuDescriptionField, saveMenuButton);
+        add(heightField, weightField, calculateButton, openTrendyol, menuNameField, menuDescriptionField, saveMenuButton, userField, userIDField, saveUserButton);
 
         calculateButton.addClickListener(e -> calculateBMI());
         openTrendyol.addClickListener(event -> {
             getUI().ifPresent(ui -> ui.getPage().open("https://www.trendyol.com/magaza/vivabien-m-982575?sst=0", "_blank"));
         });
         saveMenuButton.addClickListener(e -> saveMenu());
+        saveUserButton.addClickListener(e -> saveUser());
     }
 
     private void calculateBMI() {
@@ -52,5 +59,14 @@ public class HelloWorldView2 extends VerticalLayout {
         menuRepository.save(menu);
 
         Notification.show("Menu saved successfully!");
+    }
+    private void saveUser() {
+        User user1 = new User();
+        user1.setName(userField.getValue());
+        user1.setUserID(Integer.parseInt(userIDField.getValue()));
+
+        userRepository.save(user1);
+
+        Notification.show("User saved successfully!");
     }
 }
