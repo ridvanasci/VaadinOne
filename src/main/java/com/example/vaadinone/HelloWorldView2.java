@@ -1,16 +1,18 @@
 package com.example.vaadinone;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-
+@PageTitle("Hoşgeldiniz")
 @Route("ridvan")
 public class HelloWorldView2 extends VerticalLayout {
-
+    private Label pageTitleLabel = new Label("Hoşgeldiniz");
     private TextField heightField = new TextField("Uzunluk (cm)");
     private TextField weightField = new TextField("Genişlik (kg)");
     private Button calculateButton = new Button("Calculate Area");
@@ -28,7 +30,7 @@ public class HelloWorldView2 extends VerticalLayout {
     private UserRepository userRepository;
 
     public HelloWorldView2() {
-        add(heightField, weightField, calculateButton, openTrendyol, menuNameField, menuDescriptionField, saveMenuButton, userField, userIDField, saveUserButton);
+        add(pageTitleLabel, heightField,weightField, calculateButton, openTrendyol, menuNameField, menuDescriptionField, saveMenuButton, userField, userIDField, saveUserButton);
 
         calculateButton.addClickListener(e -> calculateBMI());
         openTrendyol.addClickListener(event -> {
