@@ -63,9 +63,9 @@ public class HelloWorldView2 extends VerticalLayout {
         Notification.show("Menu saved successfully!");
     }
     private void saveUser() {
-        User user1 = new User();
-        user1.setName(userField.getValue());
-        user1.setUserID(Integer.parseInt(userIDField.getValue()));
+        User user1 = new User(Integer.parseInt(userIDField.getValue()), (userField.getValue()));
+       // user1.setName(userField.getValue());
+       // user1.setUserID(Integer.parseInt(userIDField.getValue()));
 
         userRepository.save(user1);
 
